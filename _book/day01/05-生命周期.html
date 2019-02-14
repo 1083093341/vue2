@@ -1,0 +1,390 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>05-生命周期 · Vue</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="Buddy">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="04-过滤器的和自定义指令.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    day01
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="01-Vue的基本代码.html">
+            
+                <a href="01-Vue的基本代码.html">
+            
+                    
+                    01-Vue的基本代码
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="02-v-cloak使用.html">
+            
+                <a href="02-v-cloak使用.html">
+            
+                    
+                    02-v-cloak使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="03-Vue指令.html">
+            
+                <a href="03-Vue指令.html">
+            
+                    
+                    03-Vue指令
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="04-过滤器的和自定义指令.html">
+            
+                <a href="04-过滤器的和自定义指令.html">
+            
+                    
+                    04-过滤器的和自定义指令
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.5" data-path="05-生命周期.html">
+            
+                <a href="05-生命周期.html">
+            
+                    
+                    05-生命周期
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >05-生命周期</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="vue&#x5B9E;&#x4F8B;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;">vue&#x5B9E;&#x4F8B;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;</h2>
+<ul>
+<li>&#x4EC0;&#x4E48;&#x662F;&#x751F;&#x547D;&#x5468;&#x671F;&#xFF1A;&#x4ECE;Vue&#x5B9E;&#x4F8B;&#x521B;&#x5EFA;&#x3001;&#x8FD0;&#x884C;&#x3001;&#x5230;&#x9500;&#x6BC1;&#x671F;&#x95F4;&#xFF0C;&#x603B;&#x662F;&#x4F34;&#x968F;&#x7740;&#x5404;&#x79CD;&#x5404;&#x6837;&#x7684;&#x4E8B;&#x4EF6;&#xFF0C;&#x8FD9;&#x4E9B;&#x4E8B;&#x4EF6;&#xFF0C;&#x7EDF;&#x79F0;&#x4E3A;&#x751F;&#x547D;&#x5468;&#x671F;&#xFF01;</li>
+<li>[&#x751F;&#x547D;&#x5468;&#x671F;&#x94A9;&#x5B50;]&#xFF1A;&#x5C31;&#x662F;&#x751F;&#x547D;&#x5468;&#x671F;&#x4E8B;&#x4EF6;&#x7684;&#x522B;&#x540D;&#x800C;&#x5DF2;&#xFF1B;</li>
+<li>&#x751F;&#x547D;&#x5468;&#x671F;&#x94A9;&#x5B50; = &#x751F;&#x547D;&#x5468;&#x671F;&#x51FD;&#x6570; = &#x751F;&#x547D;&#x5468;&#x671F;&#x4E8B;&#x4EF6;</li>
+<li>&#x4E3B;&#x8981;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x51FD;&#x6570;&#x5206;&#x7C7B;&#xFF1A;<ul>
+<li>&#x521B;&#x5EFA;&#x671F;&#x95F4;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x51FD;&#x6570;&#xFF1A;<ul>
+<li>beforeCreate&#xFF1A;&#x5B9E;&#x4F8B;&#x521A;&#x5728;&#x5185;&#x5B58;&#x4E2D;&#x88AB;&#x521B;&#x5EFA;&#x51FA;&#x6765;&#xFF0C;&#x6B64;&#x65F6;&#xFF0C;&#x8FD8;&#x6CA1;&#x6709;&#x521D;&#x59CB;&#x5316;&#x597D; data &#x548C; methods &#x5C5E;&#x6027;</li>
+<li>created&#xFF1A;&#x5B9E;&#x4F8B;&#x5DF2;&#x7ECF;&#x5728;&#x5185;&#x5B58;&#x4E2D;&#x521B;&#x5EFA;OK&#xFF0C;&#x6B64;&#x65F6; data &#x548C; methods &#x5DF2;&#x7ECF;&#x521B;&#x5EFA;OK&#xFF0C;&#x6B64;&#x65F6;&#x8FD8;&#x6CA1;&#x6709;&#x5F00;&#x59CB; &#x7F16;&#x8BD1;&#x6A21;&#x677F;</li>
+<li>beforeMount&#xFF1A;&#x6B64;&#x65F6;&#x5DF2;&#x7ECF;&#x5B8C;&#x6210;&#x4E86;&#x6A21;&#x677F;&#x7684;&#x7F16;&#x8BD1;&#xFF0C;&#x4F46;&#x662F;&#x8FD8;&#x6CA1;&#x6709;&#x6302;&#x8F7D;&#x5230;&#x9875;&#x9762;&#x4E2D;</li>
+<li>mounted&#xFF1A;&#x6B64;&#x65F6;&#xFF0C;&#x5DF2;&#x7ECF;&#x5C06;&#x7F16;&#x8BD1;&#x597D;&#x7684;&#x6A21;&#x677F;&#xFF0C;&#x6302;&#x8F7D;&#x5230;&#x4E86;&#x9875;&#x9762;&#x6307;&#x5B9A;&#x7684;&#x5BB9;&#x5668;&#x4E2D;&#x663E;&#x793A;</li>
+</ul>
+</li>
+<li>&#x8FD0;&#x884C;&#x671F;&#x95F4;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x51FD;&#x6570;&#xFF1A;<ul>
+<li>beforeUpdate&#xFF1A;&#x72B6;&#x6001;&#x66F4;&#x65B0;&#x4E4B;&#x524D;&#x6267;&#x884C;&#x6B64;&#x51FD;&#x6570;&#xFF0C; &#x6B64;&#x65F6; data &#x4E2D;&#x7684;&#x72B6;&#x6001;&#x503C;&#x662F;&#x6700;&#x65B0;&#x7684;&#xFF0C;&#x4F46;&#x662F;&#x754C;&#x9762;&#x4E0A;&#x663E;&#x793A;&#x7684; &#x6570;&#x636E;&#x8FD8;&#x662F;&#x65E7;&#x7684;&#xFF0C;&#x56E0;&#x4E3A;&#x6B64;&#x65F6;&#x8FD8;&#x6CA1;&#x6709;&#x5F00;&#x59CB;&#x91CD;&#x65B0;&#x6E32;&#x67D3;DOM&#x8282;&#x70B9;</li>
+<li>updated&#xFF1A;&#x5B9E;&#x4F8B;&#x66F4;&#x65B0;&#x5B8C;&#x6BD5;&#x4E4B;&#x540E;&#x8C03;&#x7528;&#x6B64;&#x51FD;&#x6570;&#xFF0C;&#x6B64;&#x65F6; data &#x4E2D;&#x7684;&#x72B6;&#x6001;&#x503C; &#x548C; &#x754C;&#x9762;&#x4E0A;&#x663E;&#x793A;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x90FD;&#x5DF2;&#x7ECF;&#x5B8C;&#x6210;&#x4E86;&#x66F4;&#x65B0;&#xFF0C;&#x754C;&#x9762;&#x5DF2;&#x7ECF;&#x88AB;&#x91CD;&#x65B0;&#x6E32;&#x67D3;&#x597D;&#x4E86;&#xFF01;</li>
+</ul>
+</li>
+<li>&#x9500;&#x6BC1;&#x671F;&#x95F4;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x51FD;&#x6570;&#xFF1A;<ul>
+<li>beforeDestroy&#xFF1A;&#x5B9E;&#x4F8B;&#x9500;&#x6BC1;&#x4E4B;&#x524D;&#x8C03;&#x7528;&#x3002;&#x5728;&#x8FD9;&#x4E00;&#x6B65;&#xFF0C;&#x5B9E;&#x4F8B;&#x4ECD;&#x7136;&#x5B8C;&#x5168;&#x53EF;&#x7528;&#x3002;</li>
+<li>destroyed&#xFF1A;Vue &#x5B9E;&#x4F8B;&#x9500;&#x6BC1;&#x540E;&#x8C03;&#x7528;&#x3002;&#x8C03;&#x7528;&#x540E;&#xFF0C;Vue &#x5B9E;&#x4F8B;&#x6307;&#x793A;&#x7684;&#x6240;&#x6709;&#x4E1C;&#x897F;&#x90FD;&#x4F1A;&#x89E3;&#x7ED1;&#x5B9A;&#xFF0C;&#x6240;&#x6709;&#x7684;&#x4E8B;&#x4EF6;&#x76D1;&#x542C;&#x5668;&#x4F1A;&#x88AB;&#x79FB;&#x9664;&#xFF0C;&#x6240;&#x6709;&#x7684;&#x5B50;&#x5B9E;&#x4F8B;&#x4E5F;&#x4F1A;&#x88AB;&#x9500;&#x6BC1;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;app&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;&#x4FEE;&#x6539;msg&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;msg=&apos;No&apos;&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;h3&quot;</span>&gt;</span>{{ msg }}<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+    <span class="hljs-comment">// &#x521B;&#x5EFA; Vue &#x5B9E;&#x4F8B;&#xFF0C;&#x5F97;&#x5230; ViewModel</span>
+    <span class="hljs-keyword">var</span> vm = <span class="hljs-keyword">new</span> Vue({
+      el: <span class="hljs-string">&apos;#app&apos;</span>,
+      data: {
+        msg: <span class="hljs-string">&apos;ok&apos;</span>
+      },
+      methods: {
+        show() {
+          <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;&#x6267;&#x884C;&#x4E86;show&#x65B9;&#x6CD5;&apos;</span>)
+        }
+      },
+      <span class="hljs-comment">// &#x8FD9;&#x662F;&#x6211;&#x4EEC;&#x9047;&#x5230;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x751F;&#x547D;&#x5468;&#x671F;&#x51FD;&#x6570;&#xFF0C;&#x8868;&#x793A;&#x5B9E;&#x4F8B;&#x5B8C;&#x5168;&#x88AB;&#x521B;&#x5EFA;&#x51FA;&#x6765;&#x4E4B;&#x524D;&#xFF0C;&#x4F1A;&#x6267;&#x884C;&#x5B83;</span>
+      <span class="hljs-comment">// &#x6CE8;&#x610F;&#xFF1A; &#x5728; beforeCreate &#x751F;&#x547D;&#x5468;&#x671F;&#x51FD;&#x6570;&#x6267;&#x884C;&#x7684;&#x65F6;&#x5019;&#xFF0C;data &#x548C; methods &#x4E2D;&#x7684; &#x6570;&#x636E;&#x90FD;&#x8FD8;&#x6CA1;&#x6709;&#x6CA1;&#x521D;&#x59CB;&#x5316;</span>
+      beforeCreate() {  
+      },
+      <span class="hljs-comment">// &#x8FD9;&#x662F;&#x9047;&#x5230;&#x7684;&#x7B2C;&#x4E8C;&#x4E2A;&#x751F;&#x547D;&#x5468;&#x671F;&#x51FD;&#x6570;</span>
+      <span class="hljs-comment">// &#x5728; created &#x4E2D;&#xFF0C;data &#x548C; methods &#x90FD;&#x5DF2;&#x7ECF;&#x88AB;&#x521D;&#x59CB;&#x5316;&#x597D;&#x4E86;&#xFF01;</span>
+      <span class="hljs-comment">// &#x5982;&#x679C;&#x8981;&#x8C03;&#x7528; methods &#x4E2D;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x6216;&#x8005;&#x64CD;&#x4F5C; data &#x4E2D;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x6700;&#x65E9;&#xFF0C;&#x53EA;&#x80FD;&#x5728; created &#x4E2D;&#x64CD;&#x4F5C;</span>
+      created() {
+      },
+      <span class="hljs-comment">// &#x8FD9;&#x662F;&#x9047;&#x5230;&#x7684;&#x7B2C;3&#x4E2A;&#x751F;&#x547D;&#x5468;&#x671F;&#x51FD;&#x6570;&#xFF0C;&#x8868;&#x793A; &#x6A21;&#x677F;&#x5DF2;&#x7ECF;&#x5728;&#x5185;&#x5B58;&#x4E2D;&#x7F16;&#x8F91;&#x5B8C;&#x6210;&#x4E86;&#xFF0C;&#x4F46;&#x662F;&#x5C1A;&#x672A;&#x628A; &#x6A21;&#x677F;&#x6E32;&#x67D3;&#x5230; &#x9875;&#x9762;&#x4E2D;</span>
+      <span class="hljs-comment">// &#x5728; beforeMount &#x6267;&#x884C;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x9875;&#x9762;&#x4E2D;&#x7684;&#x5143;&#x7D20;&#xFF0C;&#x8FD8;&#x6CA1;&#x6709;&#x88AB;&#x771F;&#x6B63;&#x66FF;&#x6362;&#x8FC7;&#x6765;&#xFF0C;&#x53EA;&#x662F;&#x4E4B;&#x524D;&#x5199;&#x7684;&#x4E00;&#x4E9B;&#x6A21;&#x677F;&#x5B57;&#x7B26;&#x4E32;</span>
+      beforeMount() { 
+      },
+      <span class="hljs-comment">// &#x8FD9;&#x662F;&#x9047;&#x5230;&#x7684;&#x7B2C;4&#x4E2A;&#x751F;&#x547D;&#x5468;&#x671F;&#x51FD;&#x6570;&#xFF0C;&#x8868;&#x793A;&#xFF0C;&#x5185;&#x5B58;&#x4E2D;&#x7684;&#x6A21;&#x677F;&#xFF0C;&#x5DF2;&#x7ECF;&#x771F;&#x5B9E;&#x7684;&#x6302;&#x8F7D;&#x5230;&#x4E86;&#x9875;&#x9762;&#x4E2D;&#xFF0C;&#x7528;&#x6237;&#x5DF2;&#x7ECF;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x6E32;&#x67D3;                          &#x597D;&#x7684;&#x9875;&#x9762;&#x4E86;</span>
+      <span class="hljs-comment">// &#x6CE8;&#x610F;&#xFF1A; mounted &#x662F; &#x5B9E;&#x4F8B;&#x521B;&#x5EFA;&#x671F;&#x95F4;&#x7684;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x751F;&#x547D;&#x5468;&#x671F;&#x51FD;&#x6570;&#xFF0C;&#x5F53;&#x6267;&#x884C;&#x5B8C; mounted &#x5C31;&#x8868;&#x793A;&#xFF0C;&#x5B9E;&#x4F8B;&#x5DF2;&#x7ECF;&#x88AB;&#x5B8C;        &#x5168;&#x521B;&#x5EFA;&#x597D;&#x4E86;&#xFF0C;&#x6B64;&#x65F6;&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x5176;&#x5B83;&#x64CD;&#x4F5C;&#x7684;&#x8BDD;&#xFF0C;&#x8FD9;&#x4E2A;&#x5B9E;&#x4F8B;&#xFF0C;&#x5C31;&#x9759;&#x9759;&#x7684; &#x8EBA;&#x5728;&#x6211;&#x4EEC;&#x7684;&#x5185;&#x5B58;&#x4E2D;&#xFF0C;&#x4E00;&#x52A8;&#x4E0D;&#x52A8;</span>
+      mounted() { 
+      },
+      <span class="hljs-comment">// &#x63A5;&#x4E0B;&#x6765;&#x7684;&#x662F;&#x8FD0;&#x884C;&#x4E2D;&#x7684;&#x4E24;&#x4E2A;&#x4E8B;&#x4EF6;</span>
+      <span class="hljs-comment">// &#x5F53;&#x6267;&#x884C; beforeUpdate &#x7684;&#x65F6;&#x5019;&#xFF0C;&#x9875;&#x9762;&#x4E2D;&#x7684;&#x663E;&#x793A;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x8FD8;&#x662F;&#x65E7;&#x7684;&#xFF0C;&#x6B64;&#x65F6; data &#x6570;&#x636E;&#x662F;&#x6700;&#x65B0;&#x7684;&#xFF0C;&#x9875;&#x9762;&#x5C1A;&#x672A;&#x548C;            &#x6700;&#x65B0;&#x7684;&#x6570;&#x636E;&#x4FDD;&#x6301;&#x540C;&#x6B65;</span>
+      beforeUpdate() {
+      },
+      <span class="hljs-comment">// updated &#x4E8B;&#x4EF6;&#x6267;&#x884C;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x9875;&#x9762;&#x548C; data &#x6570;&#x636E;&#x5DF2;&#x7ECF;&#x4FDD;&#x6301;&#x540C;&#x6B65;&#x4E86;&#xFF0C;&#x90FD;&#x662F;&#x6700;&#x65B0;&#x7684;</span>
+      updated() {
+      }
+   });
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="04-过滤器的和自定义指令.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 04-过滤器的和自定义指令">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"05-生命周期","level":"1.2.5","depth":2,"previous":{"title":"04-过滤器的和自定义指令","level":"1.2.4","depth":2,"path":"day01/04-过滤器的和自定义指令.md","ref":"day01/04-过滤器的和自定义指令.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"expandable-chapters":{},"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Buddy","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Vue","language":"zh-hans","gitbook":"*","description":"select * from learn"},"file":{"path":"day01/05-生命周期.md","mtime":"2019-02-03T09:35:40.955Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-03T09:39:33.789Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

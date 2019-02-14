@@ -1,0 +1,436 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>04-过滤器的和自定义指令 · Vue</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="Buddy">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="05-生命周期.html" />
+    
+    
+    <link rel="prev" href="03-Vue指令.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    day01
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="01-Vue的基本代码.html">
+            
+                <a href="01-Vue的基本代码.html">
+            
+                    
+                    01-Vue的基本代码
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="02-v-cloak使用.html">
+            
+                <a href="02-v-cloak使用.html">
+            
+                    
+                    02-v-cloak使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="03-Vue指令.html">
+            
+                <a href="03-Vue指令.html">
+            
+                    
+                    03-Vue指令
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.4" data-path="04-过滤器的和自定义指令.html">
+            
+                <a href="04-过滤器的和自定义指令.html">
+            
+                    
+                    04-过滤器的和自定义指令
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="05-生命周期.html">
+            
+                <a href="05-生命周期.html">
+            
+                    
+                    05-生命周期
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >04-过滤器的和自定义指令</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <p><strong>&#x8FC7;&#x6EE4;&#x5668;&#x5E38;&#x7528;&#x4E8E;&#x4E00;&#x4E9B;&#x5E38;&#x89C1;&#x7684;&#x6587;&#x672C;&#x683C;&#x5F0F;&#x5316;</strong></p>
+<p>&#x57FA;&#x672C;&#x8BED;&#x6CD5;&#xFF1A;</p>
+<pre><code class="lang-html"><span class="hljs-comment">&lt;!-- &#x5728;&#x53CC;&#x82B1;&#x62EC;&#x53F7;&#x4E2D;--&gt;</span>
+{{ msg | msgFilter }}
+<span class="hljs-comment">&lt;!-- &#x5728; `v-bind` &#x4E2D; 2.1.0+ &#x5F00;&#x59CB;&#x652F;&#x6301; --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">v-bind:id</span>=<span class="hljs-string">&quot;rawId | formatId&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+<p>&#x5728;&#x7BA1;&#x9053;&#x7B26;&#x53F7; ( | ) &#x540E;&#x9762;&#x7684;(msgFilter)&#x5373;&#x5B9A;&#x4E49;&#x7684;&#x8FC7;&#x6EE4;&#x5668; ,  &#x524D;&#x9762;&#x7684;(msg)&#x5C06;&#x4F5C;&#x4E3A;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x4F20;&#x9012;&#x7ED9;&#x8FC7;&#x6EE4;&#x5668;&#x8FDB;&#x884C;&#x5904;&#x7406;&#x3002;</p>
+<h4 id="1-&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x5168;&#x5C40;&#x7684;&#x8FC7;&#x6EE4;&#x5668;">1. &#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x5168;&#x5C40;&#x7684;&#x8FC7;&#x6EE4;&#x5668;</h4>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;app&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>{{ msg | msgFilter(&apos;456&apos;, &apos;789&apos;) }}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="actionscript">
+  <span class="hljs-comment">// &#x5B9A;&#x4E49;&#x4E00;&#x4E2A; Vue &#x5168;&#x5C40;&#x7684;&#x8FC7;&#x6EE4;&#x5668;&#xFF0C;&#x540D;&#x5B57;&#x53EB;&#x505A;  msgFilter</span>
+  Vue.filter(<span class="hljs-string">&apos;msgFilter&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(msg, arg1, arg2)</span> </span>{
+     <span class="hljs-keyword">return</span> msg + arg1 + arg2
+  })
+  <span class="hljs-keyword">var</span> vm = <span class="hljs-keyword">new</span> Vue({
+    el: <span class="hljs-string">&apos;#app&apos;</span>,
+    data: {
+      msg: <span class="hljs-string">&apos;123&apos;</span>
+    },
+   });
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre>
+<p>&#x8FD0;&#x884C;&#x5C06;&#x770B;&#x5230;&#xFF1A;<strong>123456789</strong></p>
+<h4 id="2&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x672C;&#x5730;&#x7684;&#x5C40;&#x90E8;&#x7684;&#x8FC7;&#x6EE4;&#x5668;">2.&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x672C;&#x5730;&#x7684;&#x5C40;&#x90E8;&#x7684;&#x8FC7;&#x6EE4;&#x5668;</h4>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;app&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>{{ msg | msgFilter(&apos;456&apos;, &apos;789&apos;) }}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="actionscript">
+  <span class="hljs-keyword">var</span> vm = <span class="hljs-keyword">new</span> Vue({
+    el: <span class="hljs-string">&apos;#app&apos;</span>,
+    data: {
+      msg: <span class="hljs-string">&apos;123&apos;</span>
+    },
+   filters: { 
+      msgFilter: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(msg, arg1, arg2)</span> </span>{
+        <span class="hljs-keyword">return</span> msg + arg1 + arg2
+   }
+  }
+});
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre>
+<h4 id="3&#x591A;&#x4E2A;&#x8FC7;&#x6EE4;&#x5668;&#x4E00;&#x8D77;&#x4F7F;&#x7528;">3.&#x591A;&#x4E2A;&#x8FC7;&#x6EE4;&#x5668;&#x4E00;&#x8D77;&#x4F7F;&#x7528;</h4>
+<p><strong>&#x524D;&#x9762;&#x8FC7;&#x6EE4;&#x5668;&#x7684;&#x8FD4;&#x56DE;&#x503C;&#xFF0C;&#x5C06;&#x5F53;&#x505A;&#x540E;&#x9762;&#x8FC7;&#x6EE4;&#x5668;&#x7684;&#x53C2;&#x6570;&#x4F7F;&#x7528;</strong></p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;app&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>{{ msg | msgFormat(&apos;vue&apos;) | test }}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="actionscript">
+  <span class="hljs-comment">//&#x5B9A;&#x4E49;&#x4E24;&#x4E2A;&#x5168;&#x5C40;&#x8FC7;&#x6EE4;&#x5668;</span>
+  Vue.filter(<span class="hljs-string">&apos;msgFormat&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(msg, arg)</span> </span>{
+    <span class="hljs-keyword">return</span> msg + arg
+  })
+  Vue.filter(<span class="hljs-string">&apos;test&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(msg)</span> </span>{ 
+    <span class="hljs-keyword">return</span> msg + <span class="hljs-string">&apos;-----&apos;</span>
+  })
+  <span class="hljs-comment">// &#x521B;&#x5EFA; Vue &#x5B9E;&#x4F8B;&#xFF0C;&#x5F97;&#x5230; ViewModel</span>
+  <span class="hljs-keyword">var</span> vm = <span class="hljs-keyword">new</span> Vue({
+    el: <span class="hljs-string">&apos;#app&apos;</span>,
+    data: {
+      msg: <span class="hljs-string">&apos;hello&apos;</span>
+    },
+    methods: {}
+  });
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre>
+<p><strong>&#x8FD0;&#x884C;&#x7ED3;&#x679C;&#xFF1A; hellovue-----</strong></p>
+<blockquote>
+<p>&#x6CE8;&#x610F;&#xFF1A;&#x5F53;&#x6709;&#x5C40;&#x90E8;&#x548C;&#x5168;&#x5C40;&#x4E24;&#x4E2A;&#x540D;&#x79F0;&#x76F8;&#x540C;&#x7684;&#x8FC7;&#x6EE4;&#x5668;&#x65F6;&#x5019;&#xFF0C;&#x4F1A;&#x4EE5;&#x5C31;&#x8FD1;&#x539F;&#x5219;&#x8FDB;&#x884C;&#x8C03;&#x7528;&#xFF0C;&#x5373;&#xFF1A;&#x5C40;&#x90E8;&#x8FC7;&#x6EE4;&#x5668;&#x4F18;&#x5148;&#x4E8E;&#x5168;&#x5C40;&#x8FC7;&#x6EE4;&#x5668;&#x88AB;&#x8C03;&#x7528;</p>
+</blockquote>
+<h3 id="2x&#x4E2D;&#x81EA;&#x5B9A;&#x4E49;&#x952E;&#x76D8;&#x4FEE;&#x9970;&#x7B26;">2.x&#x4E2D;&#x81EA;&#x5B9A;&#x4E49;&#x952E;&#x76D8;&#x4FEE;&#x9970;&#x7B26;</h3>
+<ol>
+<li>&#x901A;&#x8FC7;<code>Vue.config.keyCodes.&#x540D;&#x79F0; = &#x6309;&#x952E;&#x503C;</code>&#x6765;&#x81EA;&#x5B9A;&#x4E49;&#x6848;&#x4EF6;&#x4FEE;&#x9970;&#x7B26;&#x7684;&#x522B;&#x540D;&#xFF1A;</li>
+</ol>
+<pre><code class="lang-javascript">Vue.config.keyCodes.f2 = <span class="hljs-number">113</span>;
+</code></pre>
+<ol>
+<li>&#x4F7F;&#x7528;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x6309;&#x952E;&#x4FEE;&#x9970;&#x7B26;&#xFF1A;</li>
+</ol>
+<pre><code class="lang-javascript">&lt;input type=<span class="hljs-string">&quot;text&quot;</span> v-model=<span class="hljs-string">&quot;name&quot;</span> @keyup.f2=<span class="hljs-string">&quot;add&quot;</span>&gt;
+</code></pre>
+<h3 id="&#x81EA;&#x5B9A;&#x4E49;&#x6307;&#x4EE4;">&#x81EA;&#x5B9A;&#x4E49;&#x6307;&#x4EE4;</h3>
+<ol>
+<li>&#x81EA;&#x5B9A;&#x4E49;&#x5168;&#x5C40;&#x548C;&#x5C40;&#x90E8;&#x7684; &#x81EA;&#x5B9A;&#x4E49;&#x6307;&#x4EE4;&#xFF1A;</li>
+</ol>
+<pre><code class="lang-javascript"><span class="hljs-comment">// &#x81EA;&#x5B9A;&#x4E49;&#x5168;&#x5C40;&#x6307;&#x4EE4; v-focus&#xFF0C;&#x4E3A;&#x7ED1;&#x5B9A;&#x7684;&#x5143;&#x7D20;&#x81EA;&#x52A8;&#x83B7;&#x53D6;&#x7126;&#x70B9;&#xFF1A;</span>
+Vue.directive(<span class="hljs-string">&apos;focus&apos;</span>, {
+  inserted: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">el</span>) </span>{ <span class="hljs-comment">// inserted &#x8868;&#x793A;&#x88AB;&#x7ED1;&#x5B9A;&#x5143;&#x7D20;&#x63D2;&#x5165;&#x7236;&#x8282;&#x70B9;&#x65F6;&#x8C03;&#x7528;</span>
+    el.focus();
+  }
+});
+
+<span class="hljs-comment">// &#x81EA;&#x5B9A;&#x4E49;&#x5C40;&#x90E8;&#x6307;&#x4EE4; v-color &#x548C; v-font-weight&#xFF0C;&#x4E3A;&#x7ED1;&#x5B9A;&#x7684;&#x5143;&#x7D20;&#x8BBE;&#x7F6E;&#x6307;&#x5B9A;&#x7684;&#x5B57;&#x4F53;&#x989C;&#x8272; &#x548C; &#x5B57;&#x4F53;&#x7C97;&#x7EC6;&#xFF1A;</span>
+directives: {
+    color: { <span class="hljs-comment">// &#x4E3A;&#x5143;&#x7D20;&#x8BBE;&#x7F6E;&#x6307;&#x5B9A;&#x7684;&#x5B57;&#x4F53;&#x989C;&#x8272;</span>
+        bind(el, binding) {
+            el.style.color = binding.value;
+        }
+      },
+      <span class="hljs-comment">// &#x81EA;&#x5B9A;&#x4E49;&#x6307;&#x4EE4;&#x7684;&#x7B80;&#x5199;&#x5F62;&#x5F0F;&#xFF0C;&#x7B49;&#x540C;&#x4E8E;&#x5B9A;&#x4E49;&#x4E86; bind &#x548C; update &#x4E24;&#x4E2A;&#x94A9;&#x5B50;&#x51FD;&#x6570;</span>
+     <span class="hljs-string">&apos;font-weight&apos;</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">el, binding2</span>) </span>{ 
+          el.style.fontWeight = binding2.value;
+      }
+}
+</code></pre>
+<ol>
+<li>&#x81EA;&#x5B9A;&#x4E49;&#x6307;&#x4EE4;&#x7684;&#x4F7F;&#x7528;&#x65B9;&#x5F0F;&#xFF1A;</li>
+</ol>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;searchName&quot;</span> <span class="hljs-attr">v-focus</span> <span class="hljs-attr">v-color</span>=<span class="hljs-string">&quot;&apos;red&apos;&quot;</span> <span class="hljs-attr">v-font-weight</span>=<span class="hljs-string">&quot;900&quot;</span>&gt;</span>
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="03-Vue指令.html" class="navigation navigation-prev " aria-label="Previous page: 03-Vue指令">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="05-生命周期.html" class="navigation navigation-next " aria-label="Next page: 05-生命周期">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"04-过滤器的和自定义指令","level":"1.2.4","depth":2,"next":{"title":"05-生命周期","level":"1.2.5","depth":2,"path":"day01/05-生命周期.md","ref":"day01/05-生命周期.md","articles":[]},"previous":{"title":"03-Vue指令","level":"1.2.3","depth":2,"path":"day01/03-Vue指令.md","ref":"day01/03-Vue指令.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"expandable-chapters":{},"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Buddy","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Vue","language":"zh-hans","gitbook":"*","description":"select * from learn"},"file":{"path":"day01/04-过滤器的和自定义指令.md","mtime":"2019-02-01T14:12:28.768Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-03T09:39:33.789Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
