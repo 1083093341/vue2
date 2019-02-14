@@ -1,0 +1,492 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>02-Vue创建组件 · Vue</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="Buddy">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="03-组件的切换方式.html" />
+    
+    
+    <link rel="prev" href="01-过渡-动画.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    part01
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../part01/01-Vue的基本代码.html">
+            
+                <a href="../part01/01-Vue的基本代码.html">
+            
+                    
+                    01-Vue的基本代码
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../part01/02-v-cloak使用.html">
+            
+                <a href="../part01/02-v-cloak使用.html">
+            
+                    
+                    02-v-cloak使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../part01/03-Vue指令.html">
+            
+                <a href="../part01/03-Vue指令.html">
+            
+                    
+                    03-Vue指令
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../part01/04-过滤器的和自定义指令.html">
+            
+                <a href="../part01/04-过滤器的和自定义指令.html">
+            
+                    
+                    04-过滤器的和自定义指令
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../part01/05-生命周期.html">
+            
+                <a href="../part01/05-生命周期.html">
+            
+                    
+                    05-生命周期
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    part02
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="01-过渡-动画.html">
+            
+                <a href="01-过渡-动画.html">
+            
+                    
+                    01-过渡-动画
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3.2" data-path="02-Vue创建组件.html">
+            
+                <a href="02-Vue创建组件.html">
+            
+                    
+                    02-Vue创建组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="03-组件的切换方式.html">
+            
+                <a href="03-组件的切换方式.html">
+            
+                    
+                    03-组件的切换方式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="04-父子组件传值.html">
+            
+                <a href="04-父子组件传值.html">
+            
+                    
+                    04-父子组件传值
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="05-ref获取DOM元素和组件.html">
+            
+                <a href="05-ref获取DOM元素和组件.html">
+            
+                    
+                    05-ref获取DOM元素和组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >02-Vue创建组件</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h4 id="1&#x521B;&#x5EFA;&#x7EC4;&#x4EF6;&#x7684;&#x65B9;&#x5F0F;&#x4E00;">1.&#x521B;&#x5EFA;&#x7EC4;&#x4EF6;&#x7684;&#x65B9;&#x5F0F;&#x4E00;</h4>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;app&quot;</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- &#x4F7F;&#x7528;&#x7EC4;&#x4EF6;&#xFF1A;&#x76F4;&#x63A5;&#x628A;&#x7EC4;&#x4EF6;&#x7684;&#x540D;&#x79F0;&#xFF0C;&#x4EE5;HTML &#x6807;&#x7B7E;&#x7684;&#x5F62;&#x5F0F;&#xFF0C;&#x5F15;&#x5165;&#x5230;&#x9875;&#x9762;&#x4E2D;--&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">mycom1</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">mycom1</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="actionscript">
+    <span class="hljs-comment">// 1.1 &#x4F7F;&#x7528; Vue.extend &#x6765;&#x521B;&#x5EFA;&#x5168;&#x5C40;&#x7684;Vue&#x7EC4;&#x4EF6;</span>
+    <span class="hljs-keyword">var</span> com1 = Vue.extend({
+      <span class="hljs-comment">// &#x901A;&#x8FC7; template &#x5C5E;&#x6027;&#xFF0C;&#x6307;&#x5B9A;&#x4E86;&#x7EC4;&#x4EF6;&#x8981;&#x5C55;&#x793A;&#x7684;HTML&#x7ED3;&#x6784;</span>
+      template: <span class="hljs-string">&apos;&lt;h3&gt;&#x8FD9;&#x662F;&#x4F7F;&#x7528; Vue.extend &#x521B;&#x5EFA;&#x7684;&#x7EC4;&#x4EF6;&lt;/h3&gt;&apos;</span> 
+    })
+    <span class="hljs-comment">// 1.2 &#x4F7F;&#x7528; Vue.component(&apos;&#x7EC4;&#x4EF6;&#x7684;&#x540D;&#x79F0;&apos;, &#x521B;&#x5EFA;&#x51FA;&#x6765;&#x7684;&#x7EC4;&#x4EF6;&#x6A21;&#x677F;&#x5BF9;&#x8C61;)</span>
+    Vue.component(<span class="hljs-string">&apos;mycom1&apos;</span>, com1)
+    <span class="hljs-comment">//&#x5982;&#x679C;&#x4F7F;&#x7528; Vue.component &#x5B9A;&#x4E49;&#x5168;&#x5C40;&#x7EC4;&#x4EF6;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x7EC4;&#x4EF6;&#x540D;&#x79F0;&#x4F7F;&#x7528;&#x4E86; &#x9A7C;&#x5CF0;&#x547D;&#x540D;(myCom1)&#xFF0C;</span>
+    <span class="hljs-comment">//&#x5219;&#x5728;&#x5F15;&#x7528;&#x7EC4;&#x4EF6;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x9700;&#x8981;&#x628A; &#x5927;&#x5199;&#x7684;&#x9A7C;&#x5CF0;&#x6539;&#x4E3A;&#x5C0F;&#x5199;&#x7684;&#x5B57;&#x6BCD;&#xFF0C;</span>
+    <span class="hljs-comment">//&#x540C;&#x65F6;&#xFF0C;&#x4E24;&#x4E2A;&#x5355;&#x8BCD;&#x4E4B;&#x524D;&#xFF0C;&#x4F7F;&#x7528; - &#x94FE;&#x63A5;  (my-com1)</span>
+
+   <span class="hljs-comment">//Vue.component(&apos;mycom1&apos;, Vue.extend({</span>
+     <span class="hljs-comment">// template: &apos;&lt;h3&gt;&#x8FD9;&#x662F;&#x4F7F;&#x7528; Vue.extend &#x521B;&#x5EFA;&#x7684;&#x7EC4;&#x4EF6;&lt;/h3&gt;&apos;</span>
+   <span class="hljs-comment">//}))</span>
+   <span class="hljs-keyword">var</span> vm = <span class="hljs-keyword">new</span> Vue({
+     el: <span class="hljs-string">&apos;#app&apos;</span>,
+     data: {},
+     methods: {}
+   });
+  </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+</code></pre>
+<h4 id="2&#x521B;&#x5EFA;&#x7EC4;&#x4EF6;&#x7684;&#x65B9;&#x5F0F;&#x4E8C;">2.&#x521B;&#x5EFA;&#x7EC4;&#x4EF6;&#x7684;&#x65B9;&#x5F0F;&#x4E8C;</h4>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;app&quot;</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- &#x8FD8;&#x662F;&#x4F7F;&#x7528; &#x6807;&#x7B7E;&#x5F62;&#x5F0F;,&#x5F15;&#x5165;&#x81EA;&#x5DF1;&#x7684;&#x7EC4;&#x4EF6; --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">mycom2</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">mycom2</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="actionscript">
+    <span class="hljs-comment">// &#x6CE8;&#x610F;:&#x4E0D;&#x8BBA;&#x662F;&#x54EA;&#x79CD;&#x65B9;&#x5F0F;&#x521B;&#x5EFA;&#x51FA;&#x6765;&#x7684;&#x7EC4;&#x4EF6;,&#x7EC4;&#x4EF6;&#x7684; template &#x5C5E;&#x6027;&#x6307;&#x5411;&#x7684;&#x6A21;&#x677F;&#x5185;&#x5BB9;,&#x5FC5;&#x987B;&#x6709;&#x4E14;&#x53EA;&#x80FD;&#x6709;&#x552F;&#x4E00;&#x7684;&#x4E00;&#x4E2A;&#x6839;&#x5143;&#x7D20;</span>
+    Vue.component(<span class="hljs-string">&apos;mycom2&apos;</span>, {
+      template: <span class="hljs-string">&apos;&lt;div&gt;&lt;h3&gt;&#x8FD9;&#x662F;&#x76F4;&#x63A5;&#x4F7F;&#x7528; Vue.component &#x521B;&#x5EFA;&#x51FA;&#x6765;&#x7684;&#x7EC4;&#x4EF6;&lt;/h3&gt;&lt;span&gt;123&lt;/span&gt;&lt;/div&gt;&apos;</span>
+    })
+    <span class="hljs-keyword">var</span> vm = <span class="hljs-keyword">new</span> Vue({
+      el: <span class="hljs-string">&apos;#app&apos;</span>,
+      data: {},
+      methods: {}
+    });
+  </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+</code></pre>
+<h4 id="3&#x521B;&#x5EFA;&#x7EC4;&#x4EF6;&#x7684;&#x65B9;&#x5F0F;&#x4E09;">3.&#x521B;&#x5EFA;&#x7EC4;&#x4EF6;&#x7684;&#x65B9;&#x5F0F;&#x4E09;</h4>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;app&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">mycom3</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">mycom3</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-comment">&lt;!-- &#x5728; &#x88AB;&#x63A7;&#x5236;&#x7684; #app &#x5916;&#x9762;,&#x4F7F;&#x7528; template &#x5143;&#x7D20;,&#x5B9A;&#x4E49;&#x7EC4;&#x4EF6;&#x7684;HTML&#x6A21;&#x677F;&#x7ED3;&#x6784;  --&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">template</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;tmpl&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>&#x8FD9;&#x662F;&#x901A;&#x8FC7; template &#x5143;&#x7D20;,&#x5728;&#x5916;&#x90E8;&#x5B9A;&#x4E49;&#x7684;&#x7EC4;&#x4EF6;&#x7ED3;&#x6784;,&#x8FD9;&#x4E2A;&#x65B9;&#x5F0F;,&#x6709;&#x4EE3;&#x7801;&#x7684;&#x53EA;&#x80FD;&#x63D0;&#x793A;&#x548C;&#x9AD8;&#x4EAE;<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">h4</span>&gt;</span>&#x597D;&#x7528;,&#x4E0D;&#x9519;!<span class="hljs-tag">&lt;/<span class="hljs-name">h4</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="actionscript">
+    <span class="hljs-comment">//&#x5168;&#x5C40;</span>
+    <span class="hljs-comment">//Vue.component(&apos;mycom3&apos;, {</span>
+      <span class="hljs-comment">//template: &apos;#tmpl&apos;</span>
+    <span class="hljs-comment">//})</span>
+    <span class="hljs-keyword">var</span> vm = <span class="hljs-keyword">new</span> Vue({
+      el: <span class="hljs-string">&apos;#app&apos;</span>,
+      data: {},
+      methods: {},
+      filters: {},
+      directives: {},
+      <span class="hljs-comment">// &#x5B9A;&#x4E49;&#x5B9E;&#x4F8B;&#x5185;&#x90E8;&#x79C1;&#x6709;&#x7EC4;&#x4EF6;&#x7684;</span>
+      components: { 
+        mycom3: {
+          template: <span class="hljs-string">&apos;#tmpl&apos;</span>
+        }
+      },
+    })
+  </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="01-过渡-动画.html" class="navigation navigation-prev " aria-label="Previous page: 01-过渡-动画">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="03-组件的切换方式.html" class="navigation navigation-next " aria-label="Next page: 03-组件的切换方式">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"02-Vue创建组件","level":"1.3.2","depth":2,"next":{"title":"03-组件的切换方式","level":"1.3.3","depth":2,"path":"part02/03-组件的切换方式.md","ref":"part02/03-组件的切换方式.md","articles":[]},"previous":{"title":"01-过渡-动画","level":"1.3.1","depth":2,"path":"part02/01-过渡-动画.md","ref":"part02/01-过渡-动画.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"expandable-chapters":{},"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Buddy","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Vue","language":"zh-hans","gitbook":"*","description":"select * from learn"},"file":{"path":"part02/02-Vue创建组件.md","mtime":"2019-02-14T14:41:54.022Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-14T14:46:26.467Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
